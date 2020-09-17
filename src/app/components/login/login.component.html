@@ -1,0 +1,73 @@
+<div style="background-image: url('assets/images/login.jpg');" class="row no-gutters align-items-center main-wrapper" dir="ltr">
+
+    <div class="col-md-6">
+
+        <form #userForm="ngForm" (ngSubmit)="login(userForm.value);" class="login-form">
+            <div class="form-group user-wrapper">
+                <label #emailLabel for="email" class="user-label"> Username or Email </label>
+                <input
+                    [ngClass]="{ 'is-invalid': email.invalid && email.touched , 'is-valid': !email.invalid && email.touched, 'pr-50': email.touched }"
+                    ngModel #email="ngModel" required email (click)="animateLabel(emailLabel)"
+                    (focus)="animateLabel(emailLabel)" name="email" type="text" id="email" class="form-control input-user">
+
+
+                <div *ngIf="!email.valid && email.touched" class="">
+                    <div class="alert alert-danger" *ngIf="email.errors.required">email is required </div>
+                    <div class="alert alert-danger" *ngIf="email.errors.email">email must be a valid email </div>
+                </div>
+            </div>
+
+            <div class="form-group user-wrapper">
+                <label #passwordLabel for="password" class="user-label"> password</label>
+                <input
+                    [ngClass]="{ 'is-invalid': password.invalid && password.touched , 'pr-50': password.touched , 'is-valid': !password.invalid && password.touched}"
+                    password ngModel required minlength="8" #password="ngModel" (click)="animateLabel(passwordLabel)"
+                    (focus)="animateLabel(passwordLabel)" name="password" id="password" type="password"
+                    class="form-control input-user">
+
+                <div *ngIf="!password.valid && password.touched" class="">
+                    <div class="alert alert-danger " *ngIf="password.errors.required">
+                        Password is required
+                    </div>
+
+                    <div class="alert alert-danger " *ngIf="password.errors.minlength">
+                        Password field must be at least 8 Charachters 
+                    </div>
+                </div>
+            </div>
+
+
+            <div *ngIf="invalidLogin" class="pv-30 text-center login-alert alert alert-danger">
+                email and passwords doesn't match
+            </div>
+
+             <!-- <div class="row remember-me">
+        <div class="col">
+            <input type="checkbox" name="remember-me">
+            <label for="remember-me" class="mr-10"> تذكرني</label>
+        </div>
+        <div class="text-left col">
+            <a class="forget-password" routerLink="forget-password" >هل نسيت كلمة المرور؟</a>
+        </div>
+    </div> -->
+
+            <!-- forget password and remember me -->
+        <div class="d-flex justify-content-between align-items-center">
+         <button [disabled]="!userForm.valid" class="btn admin-btn">login </button>
+         <a class="forget-password" routerLink="/forget_password" >forget password </a>
+
+
+        </div>
+        
+    
+    <div *ngIf="isLoading" class="mt-100 d-flex justify-content-center">
+        <mat-spinner></mat-spinner>
+    </div>
+
+        </form>
+       
+
+    </div>
+
+
+</div>

@@ -1,0 +1,222 @@
+<section class="pb-150" style="background-image: url('assets/images/patient-details.jpg');">
+    <div class="overlay"> </div>
+    <div class="main-wrapper">
+        <h1>معلومات المريض</h1>
+        <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th scope="col">الاسم</th>
+                <th scope="col">العمر</th>
+                <th scope="col">رقم التليفون</th>
+                <th scope="col">العنوان</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{{patientData.name}}</td>
+                <td>{{patientData.age}}</td>
+                <td>{{patientData.phone}}</td>
+                <td>{{patientData.address}} </td>
+              </tr>
+            </tbody>
+        </table>
+    
+        <h1>معلومات الأب والأم</h1>
+        <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th scope="col"></th>
+                <th scope="col">معلومات الأب</th>
+
+                <th scope="col">معلومات الأم</th>
+              
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th class="title">الاسم</th>
+                <td>{{patientData.father_name}}</td>
+                <td>{{patientData.mather_name}}</td>
+              </tr>
+    
+              <tr>
+                <th class="title">العمر</th>
+                <td>{{patientData.father_age}}</td>
+                <td>{{patientData.mather_age}}</td>
+              </tr>
+    
+              <tr>
+                <th class="title">الوظيفة</th>
+                <td>{{patientData.father_job}}</td>
+                <td>{{patientData.mather_job}}</td>
+
+              </tr>
+    
+    
+              <tr>
+                <th class="title">عدد مرات الولادة</th>
+                <td></td>
+                <td>{{patientData.number_of_births}}</td>
+              
+              </tr>
+            </tbody>
+        </table>
+
+    
+
+        <h1>معلومات اضافية</h1>
+        <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th scope="col">تاريخ الحجز</th>
+
+                <td scope="col">{{patientData.date}}</td>
+              
+              </tr>
+            </thead>
+            <tbody>
+            
+    
+
+    
+              <tr>
+                <th class="title">ملاحظات</th>
+                <td></td>
+                <td>{{patientData.notes}}</td>
+              
+              </tr>
+            </tbody>
+        </table>
+        
+    
+    
+
+    
+        <div class="diagnose" dir="ltr">
+        <form #userForm="ngForm" (ngSubmit)="addDiagnose()" class="section text-right ph-70">
+                <div class="input-group mb-3">
+                    <div class="input-group-append">
+                        <label class="input-group-text" for="complaint" >complaint</label>
+                    </div>
+        
+                    <input type="text" name ="complaint" [(ngModel)]="patientData.complaint" class="form-control"  #address="ngModel"  id="complaint" >
+                </div>
+        
+
+                <div class="input-group mb-3">
+                    <div class="input-group-append">
+                        <label class="input-group-text" for="examination" >examination</label>
+                    </div>
+        
+                    <input type="text" name ="examination" [(ngModel)]="patientData.examination" class="form-control" #phone="ngModel"  id="examination" >
+                    
+                </div>
+        
+        
+                
+                <div class="input-group mb-3">
+                    <div class="input-group-append">
+                        <label class="input-group-text" for="diagnosis" >diagnosis</label>
+                    </div>
+        
+                    <input type="text" name ="diagnosis" [(ngModel)]="patientData.diagnosis" class="form-control"  #birth_day="ngModel" id="diagnosis" >
+                </div>
+                
+                <div class="input-group mb-3">
+                    <div class="input-group-append">
+                        <label class="input-group-text" for="investigation" >investigation</label>
+                    </div>
+        
+                    <input type="text" name ="investigation" [(ngModel)]="patientData.investigation" class="form-control"  #investigation="ngModel" id="investigation" >
+                </div>
+                
+                <div class="input-group mb-3">
+                    <div class="input-group-append">
+                        <label class="input-group-text" for="treamtent" >treatment</label>
+                    </div>
+        
+                    <input type="text" name ="treamtent" [(ngModel)]="patientData.treamtent" class="form-control"  #treamtent="ngModel" id="treamtent" >
+                </div>
+                
+                <div class="input-group mb-3">
+                    <div class="input-group-append">
+                        <label class="input-group-text" for="reseen" >reseen</label>
+                    </div>
+        
+                    <input type="text" name ="reseen" [(ngModel)]="patientData.reseen" class="form-control"  #birth_day="ngModel" id="reseen" >
+                </div>
+                
+                <div class="input-group mb-3">
+                    <div class="input-group-append">
+                        <label class="input-group-text" for="hn" >H £ N</label>
+                    </div>
+        
+                    <input type="text" name ="hn" [(ngModel)]="patientData.hn" class="form-control"  #hn="ngModel" id="hn" >
+                </div>
+                
+                <div class="input-group mb-3">
+                    <div class="input-group-append">
+                        <label class="input-group-text" for="phnx" >phnx</label>
+                    </div>
+        
+                    <input type="text" name ="phnx" [(ngModel)]="patientData.phnx" class="form-control"  #phnx="ngModel" id="phnx" >
+                </div>
+                
+
+                <div class="input-group mb-3">
+                    <div class="input-group-append">
+                        <label class="input-group-text" for="nose" >nose</label>
+                    </div>
+        
+                    <input type="text" name ="nose" [(ngModel)]="patientData.nose" class="form-control"  #nose="ngModel" id="nose" >
+                </div>
+
+
+                
+                <div class="input-group mb-3">
+                    <div class="input-group-append">
+                        <label class="input-group-text" for="hrt" >hrt</label>
+                    </div>
+        
+                    <input type="text" name ="hrt" [(ngModel)]="patientData.hrt" class="form-control"  #hrt="ngModel" id="hrt" >
+                </div>
+
+                
+                <div class="input-group mb-3">
+                    <div class="input-group-append">
+                        <label class="input-group-text" for="abd" >abd</label>
+                    </div>
+        
+                    <input type="text" name ="abd" [(ngModel)]="patientData.abd" class="form-control"  #abd="ngModel" id="chest" >
+                </div>
+                
+
+                
+                <div class="input-group mb-3">
+                    <div class="input-group-append">
+                        <label class="input-group-text" for="gentalia" >gentalia</label>
+                    </div>
+        
+                    <input type="text" name ="gentalia" [(ngModel)]="patientData.gentalia" class="form-control"  #gentalia="ngModel" id="gentalia" >
+                </div>
+                
+
+                <div class="input-group mb-3">
+                    <div class="input-group-append">
+                        <label class="input-group-text" for="other" >other</label>
+                    </div>
+        
+                    <input type="text" name ="other" [(ngModel)]="patientData.other" class="form-control"  #other="ngModel" id="other" >
+                </div>
+                
+                            
+                <div class="text-center w-100 d-flex justify-content-center mb-30 mt-20 ">
+                    <button [disabled]="userForm.invalid" class="admin-btn pv-20 rounded">تسجيل</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- <div class="mt-150"></div> -->
+</section>
+    

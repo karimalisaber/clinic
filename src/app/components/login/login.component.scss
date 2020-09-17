@@ -1,0 +1,78 @@
+@import "variables";
+
+.main-wrapper{
+    height: calc(100vh - 90px);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+*{
+    overflow: hidden !important;
+
+}
+
+.remember-me-checkbox{
+    width: 20px;
+    height: 20px;
+    border-radius: 30
+    
+}
+
+.login-form{
+    padding: 0 100px 0 100px;
+    font-size: 20px;
+    color: $thirdColor;
+    width: 70%;
+    .user-wrapper{
+        position: relative;
+        margin-bottom: 30px;
+        .input-user{
+            border: 1px solid #000;
+            caret-color: $thirdColor;
+            height: 20px;
+            font-size: 25px;
+            font-weight: lighter;
+            padding: 30px  15px;
+            // border: none;
+            border-bottom: 1px solid $thirdColor;
+            border-radius: 15px;
+            transition: $mainTransition;
+            color: $thirdColor;
+            
+        }
+
+        .user-label{
+            font-size: 25px;
+            font-weight: lighter;
+            position: absolute;
+            bottom: 10%;
+            padding: 0 15px 6px;
+        }
+
+        .animate{
+            position: static;
+        }
+    }
+
+    // submit button
+    .submit{
+        margin-top: 50px;
+        font-size: 1.5rem;
+        height: 70px;
+        line-height: 70px;
+        border: 0;
+        padding: 0;
+        text-align: center;
+        background-color: $secondColor;
+        color: $mainColor;
+    }
+    .remember-me{
+        .forget-password{
+            color: $thirdColor;
+
+            &:hover{
+                color: $mainColor
+            }
+        }
+    }
+}

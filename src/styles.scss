@@ -1,1 +1,65 @@
-/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+@import "variables";
+@import "framework";
+@import '~@fortawesome/fontawesome-free/css/all.min.css';
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+
+
+.admin-btn{
+    display: block;
+    width: 170px;
+    border: 1px solid $adminBtnColor;
+    color: $adminBtnColor;
+    font-size: 1.4rem;
+    &:hover{
+        color: #fff !important;
+        background-color: $adminBtnColor !important;
+    }
+}
+
+
+// for pagination
+.pagination-wrapper{
+    .number{
+        font-size: 20px;
+        align-items: center;
+        background-color: $adminBtnColor;
+        width: 30px;
+        height: 30px;
+        color: #fff;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .fa-angle-double-right, .fa-angle-double-left{
+        display: flex;
+        justify-content: center;
+        width: 30px;
+        font-size: 1.4rem;
+    
+        &.disabled{
+            opacity: .4;
+            display: none;
+        }
+    }
+}
+
+
+.page-item.active{
+    border: 0;
+    .page-link{
+        background-color: $mainColor;
+    }
+}
+
+.page-link.active{
+    
+    background-color: $mainColor;
+}
+
+
+.confirm-dialog-container{
+    z-index: 548564132748 !important;
+    background-color: #f2f2f2;
+}

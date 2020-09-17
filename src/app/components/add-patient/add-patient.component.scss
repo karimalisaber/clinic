@@ -1,0 +1,46 @@
+@import "variables";
+
+form{
+    background-color: #fafaff;
+    border: 1px solid $lightBorder;
+
+}
+
+.border-v{
+    border-bottom: 1px solid $lightBorder;
+    border-top: 1px solid $lightBorder;
+    
+}
+
+
+.input-group{
+    border: 15px
+}
+
+.input-group-text{
+    font-size: 1.3rem;
+    border-top-right-radius: 15px !important;
+    border-bottom-right-radius: 15px !important;
+}
+
+input{
+    border-top-left-radius: 15px !important;
+    border-bottom-left-radius: 15px !important;
+    font-size: 1.3rem;
+}
+
+.notes-label{
+    border-top-left-radius: 15px !important;
+    border-top-right-radius: 15px !important;
+    border-bottom: 0;
+    border: 1px solid $lightBorder;
+}
+
+textarea{
+    resize: none;
+    height: 350px;
+}
+
+.input-group-text{
+    background-color: #fff;
+}

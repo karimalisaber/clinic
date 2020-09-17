@@ -1,0 +1,161 @@
+<form #userForm="ngForm" (ngSubmit)="addPatient(userForm.value)" action="" class="w-75 m-auto mt-40 text-right">
+   
+    <h1 class="border-bottom pv-10 ph-30 pv-20">المعلومات الشخصية</h1>
+
+    <div class="section text-right ph-80">        
+        <div class="input-group mb-3">
+            <div class="input-group-append">
+                <label class="input-group-text" for="name" >الاسم</label>
+            </div>
+
+            <input type="text" class="form-control"  id="name" name="name" ngModel required #name="ngModel"
+            [ngClass]="{ 'is-invalid': name.invalid && name.touched , 'is-valid': !name.invalid && name.touched}"
+            >
+            
+        </div>
+
+        <div class="input-group mb-3">
+            <div class="input-group-append">
+                <label class="input-group-text" for="address" >العنوان</label>
+            </div>
+
+            <input type="text" class="form-control" name="address" #address="ngModel" ngModel id="address" required 
+            [ngClass]="{ 'is-invalid': address.invalid && address.touched , 'is-valid': !address.invalid && address.touched}"
+            
+            >
+        </div>
+
+        <div class="input-group mb-3">
+            <div class="input-group-append">
+                <label class="input-group-text" for="phone" >رقم التليفون</label>
+            </div>
+
+            <input type="number" class="form-control" required name="phone" #phone="ngModel" ngModel id="phone" 
+            [ngClass]="{ 'is-invalid': phone.invalid && phone.touched , 'is-valid': !phone.invalid && phone.touched}"
+            
+            >
+            
+        </div>
+
+
+        
+        <div class="input-group mb-3">
+            <div class="input-group-append">
+                <label class="input-group-text" for="age" >العمر</label>
+            </div>
+
+            <input type="number" class="form-control" name="age" #age="ngModel" ngModel id="age"  required
+            [ngClass]="{ 'is-invalid': age.invalid && age.touched , 'is-valid': !age.invalid && age.touched }"
+            
+            >
+        </div>
+    </div>
+
+    <!-- seciton 2  -->
+    <h1 class="border-v pv-10 ph-30">معلومات الأب</h1>
+
+    <div class="section text-right ph-80">        
+        <div class="input-group mb-3">
+            <div class="input-group-append">
+                <label class="input-group-text" for="father_name" >الاسم</label>
+            </div>
+
+            <input type="text" class="form-control" name="father_name" #father_name="ngModel" ngModel id="father_name" required 
+            [ngClass]="{ 'is-invalid': father_name.invalid && father_name.touched , 'is-valid': !father_name.invalid && father_name.touched }"
+            
+            >
+        </div>
+
+        <div class="input-group mb-3">
+            <div class="input-group-append">
+                <label class="input-group-text" for="father_job" >الوظيفة</label>
+            </div>
+
+            <input type="text" class="form-control" required name="father_job" #father_job="ngModel" ngModel id="father_job" 
+            [ngClass]="{ 'is-invalid': father_job.invalid && father_job.touched , 'is-valid': !father_job.invalid && father_job.touched }"
+            
+            >
+        </div>
+
+        <div class="input-group mb-3">
+            <div class="input-group-append">
+                <label class="input-group-text" for="father_age" >العمر</label>
+            </div>
+
+            <input type="number" class="form-control" required name="father_age" #father_age="ngModel" ngModel id="father_age" 
+            [ngClass]="{ 'is-invalid': father_age.invalid && father_age.touched , 'is-valid': !father_age.invalid && father_age.touched}"
+            
+            >
+        </div>
+    </div>
+
+    
+    <!-- seciton 3  -->
+    <h1 class="border-v pv-10 ph-30">معلومات الأم</h1>
+
+    <div class="section text-right ph-80">        
+        <div class="input-group mb-3">
+            <div class="input-group-append">
+                <label class="input-group-text" for="mather_name" >الاسم</label>
+            </div>
+
+            <input type="text" class="form-control"  name="mather_name" #mather_name="ngModel" ngModel id="mather_name" required
+            [ngClass]="{ 'is-invalid': mather_name.invalid && mather_name.touched , 'is-valid': !mather_name.invalid && mather_name.touched }"
+            
+            >
+        </div>
+
+        <div class="input-group mb-3">
+            <div class="input-group-append">
+                <label class="input-group-text" for="age" id="mather_age">العمر</label>
+            </div>
+
+            <input type="number" class="form-control"  required name="mather_age" #mather_age="ngModel" id="mather_age" ngModel
+            [ngClass]="{ 'is-invalid': mather_age.invalid && mather_age.touched , 'is-valid': !mather_age.invalid && mather_age.touched, 'pr-50': mather_age.touched }"
+            
+            >
+        </div>
+
+
+        <div class="input-group mb-3">
+            <div class="input-group-append">
+                <label class="input-group-text" for="number_of_births" >عدد مرات الولادة </label>
+            </div>
+
+            <input type="number" class="form-control" name="number_of_births" #number_of_births="ngModel" id="number_of_births" ngModel required
+            [ngClass]="{ 'is-invalid': number_of_births.invalid && number_of_births.touched , 'is-valid': !number_of_births.invalid && number_of_births.touched }"
+            
+            >
+        </div>
+
+
+        <!-- section 4 -->
+        <div dir="rtl"  class="section text-right">
+            <div class="input-group mb-3">
+                <div class="">
+                    <label class="input-group-text" for="date" >تاريخ الحجز</label>
+                </div>
+
+                <input type="date" class="form-control" name="date" #date="ngModel" id="date" ngModel required
+         
+                
+                >
+            </div>
+
+            <div class="form-group mb-3">
+                <div class="">
+                    <label class="d-block m-0 p-20 notes-label" for="notes">ملاحظات</label>
+                </div>
+
+                <textarea class="form-control" id="notes" name="notes" #notes="ngModel" ngModel
+                    [ngClass]="{ 'is-invalid': notes.invalid && notes.touched , 'is-valid': !notes.invalid && notes.touched }"
+                
+                > </textarea>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center w-100 d-flex justify-content-center mb-30 mt-20 ">
+        <button [disabled]="userForm.invalid" class="admin-btn pv-20 rounded">اضافة</button>
+    </div>
+</form>

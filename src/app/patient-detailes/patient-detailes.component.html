@@ -1,0 +1,168 @@
+<section class="pb-150" style="background-image: url('assets/images/patient-details.jpg');">
+<div class="overlay"> </div>
+<div *ngIf="patientData" class="main-wrapper">
+    <h1>معلومات المريض</h1>
+    <table  class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">الاسم</th>
+            <th scope="col">العمر</th>
+            <th scope="col">رقم التليفون</th>
+            <th scope="col">العنوان</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{patientData.name}}</td>
+            <td>{{patientData.age}}</td>
+            <td>{{patientData.phone}}</td>
+            <td>{{patientData.address}} </td>
+          </tr>
+        </tbody>
+    </table>
+
+    <h1>معلومات الأب والأم</h1>
+    <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">معلومات الأم</th>
+            <th scope="col">معلومات الأب</th>
+          
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th class="title">الاسم</th>
+            <td>{{patientData.father_name}}</td>
+            <td>{{patientData.mather_name}}</td>
+          </tr>
+
+          <tr>
+            <th class="title">العمر</th>
+            <td>{{patientData.father_age}}</td>
+            <td>{{patientData.mather_age}}</td>
+          </tr>
+
+          <tr>
+            <th class="title">الوظيفة</th>
+            <td>{{patientData.father_job}}</td>
+            <td>{{patientData.mather_job}}</td>
+          </tr>
+
+          <tr>
+            <th class="title">عدد مرات الولادة</th>
+            <td></td>
+            <td>{{patientData.number_of_births}}</td>
+          </tr>
+        </tbody>
+    </table>
+
+
+    <h1>التشخيص</h1>
+    <table class="table table-bordered">
+      
+        <tbody>
+          <tr>
+            <th class="title"> Complaint </th>
+            <td class="text-right pr-30"> {{patientData.complaint}}</td>
+          </tr>
+
+          <tr>
+            <th class="title">Examination</th>
+            <td class="text-right pr-30">{{patientData.examination}}</td>
+          </tr>
+
+          <tr>
+            <th class="title">Diagnosis</th>
+            <td class="text-right pr-30">{{patientData.diagnosis}}</td>
+          </tr>
+
+          
+          <tr>
+            <th class="title">Investigation</th>
+            <td class="text-right pr-30">{{patientData.investigation}}</td>
+          </tr>
+
+          
+          <tr>
+            <th class="title">Treatment</th>
+            <td class="text-right pr-30">{{patientData.treamtent}}</td>
+          </tr>
+
+          
+          <tr>
+            <th class="title">Reseen</th>
+            <td class="text-right pr-30">{{patientData.reseen}}</td>
+          </tr>
+
+          
+          <tr>
+            <th class="title">H £ N </th>
+            <td class="text-right pr-30">{{patientData.hn}}</td>
+          </tr>
+
+          
+          <tr>
+            <th class="title">Phnx</th>
+            <td class="text-right pr-30">{{patientData.phnx}}</td>
+          </tr>
+
+          
+          <tr>
+            <th class="title">Nose</th>
+            <td class="text-right pr-30">{{patientData.nose}}</td>
+          </tr>
+
+
+          
+          <tr>
+            <th class="title">Hrt </th>
+            <td class="text-right pr-30">{{patientData.hrt}}</td>
+          </tr>
+
+          
+          <tr>
+            <th class="title">Abd</th>
+            <td class="text-right pr-30">{{patientData.abd}}</td>
+          </tr>
+
+          
+          <tr>
+            <th class="title">Gentalia</th>
+            <td class="text-right pr-30">{{patientData.gentalia}}</td>
+          </tr>
+
+          
+          <tr>
+            <th class="title">other</th>
+            <td class="text-right pr-30">{{patientData.other}}</td>
+          </tr>
+
+
+          
+
+        </tbody>
+    </table>
+
+    
+    <h1>معلومات اضافية</h1>
+    <table class="table table-bordered">
+      
+        <tbody>
+          <tr>
+            <th class="title">معاد آخر زيارة </th>
+            <td class="text-right pr-30">{{patientData.date}}</td>
+          </tr>
+
+          <tr>
+            <th class="title">ملاحظات </th>
+            <td class="text-right pr-30">{{patientData.notes}}</td>
+          </tr>
+        
+        </tbody>
+    </table>
+</div>
+
+<!-- <div class="mt-150"></div> -->
+</section>

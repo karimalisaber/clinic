@@ -1,0 +1,59 @@
+@import "variables";
+nav{
+    justify-content: end;
+    display: flex;
+    align-items: center;
+    height: 90px;
+    border-bottom: 1px solid  $lightBorder;
+    justify-content: end;
+
+    .fa-bars{
+        color: $thirdColor;
+        font-size: 1.5rem;
+    }
+}
+
+.box{
+    z-index: 150;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    // background-color: #f2f2f2;
+    top: 0;
+    right: 0;
+    transform: translateX(10000px);
+    transition: .9s;
+
+    &.view{
+        transform: translateX(0);
+    }
+
+    .right-box{    
+        width: 250px;
+        height: 100vh;
+        background-color: #fff;
+    
+    }
+}
+
+li{
+    display: block;
+    margin-top: 20px;
+    transition: $mainTransition;
+
+    a{
+        color: $secondColor;
+
+        font-size: 1.4rem;
+        
+    }
+
+    
+    &:hover{
+        transform: scale(1.1);
+    }
+}
+
+.btn{
+    font-size: 1.2rem;
+}

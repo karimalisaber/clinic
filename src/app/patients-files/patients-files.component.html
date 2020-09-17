@@ -1,0 +1,66 @@
+
+<div *ngIf="isLoading" class="mt-100 d-flex justify-content-center" >
+    <mat-spinner></mat-spinner>
+</div>
+
+<h1 class="text-center mt-40 mb-20">ملفات المرضى</h1>
+
+<div *ngIf="!isLoading" class="pb-80 ph-50 ph-20 ">
+    <a *ngIf="role===1" routerLink="/add_patient" class="btn admin-btn mb-30">اضافة</a>
+
+    <table mat-table [dataSource]="this.patients" class="table-bordered  w-100 mat-elevation-z8">      
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> الاسم </th>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+      
+        <!-- Weight Column -->
+        <ng-container matColumnDef="age">
+          <th class="age" mat-header-cell *matHeaderCellDef> العمر </th>
+          <td mat-cell *matCellDef="let element"> {{element.age}} </td>
+        </ng-container>
+      
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="phone">
+          <th mat-header-cell *matHeaderCellDef> رقم التليفون </th>
+          <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="address">
+            <th mat-header-cell *matHeaderCellDef> العنوان </th>
+            <td mat-cell *matCellDef="let element"> {{element.address}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+            <th class="action" mat-header-cell *matHeaderCellDef> # </th>
+            
+            <td class="action details action-item" mat-cell *matCellDef="let element"> <a [routerLink]="'/patient_details/' + element.id"> تفاصيل</a> </td>
+        </ng-container>
+
+
+        <tr class="text-right" mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr class="text-right" mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>    
+
+
+    <nav class="d-flex justify-content-center mt-20" aria-label="Page navigation example">
+      <ul class="pagination">
+        <li (click) = "prev()" class="page-item">
+          <button [disabled] = "this.pages.current_page == 1" class="page-link " aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+          </button>
+        </li>
+        
+        <li *ngFor="let page of pages.pagesNumber; index as i" class="page-item">
+          <button (click)="otherPatients(i+1);" [id] ="'item-' + (i+1)" [class.active]="i===pages.current_page - 1" class="page-link" >{{i + 1}}</button>
+        </li>
+      
+        <li (click) = "next()" class="page-item">
+          <button class="page-link" aria-label="Next" [disabled] = "this.pages.current_page >= this.pages.last_page">
+            <span aria-hidden="true">&raquo;</span>
+          </button>
+        </li>
+      </ul>
+    </nav>
+</div>

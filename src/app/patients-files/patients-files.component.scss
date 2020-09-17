@@ -1,0 +1,50 @@
+table{
+    border: 0;
+    box-shadow: none;
+    background-color: transparent;
+    border-collapse: separate;
+    border-spacing: 0  10px !important;
+
+
+    th{
+        text-align: center;
+        font-size: 27px;
+    }
+
+    td{
+        text-align: center;
+        font-size: 1.1rem;
+        color: #000;
+        // border: 1px solid black;
+    }
+}
+
+.action{
+    text-align: center;
+    width: 90px !important;
+}
+
+.age{
+    width: 120px;
+}
+
+.action-item {
+    background-color: #207429;
+    
+    padding: 0 !important;
+    a{
+        display: block;
+        font-size: 1.5rem;
+        color: #f2f2f2 !important;
+    }
+}
+
+.details{
+    background-color: #177AC7;
+
+}
+
+h1{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 3rem;
+}
