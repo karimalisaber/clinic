@@ -11,7 +11,23 @@ export class AddPatientComponent implements OnInit {
 @ViewChild('userForm') userForm : HTMLFormElement;
   patientId = this.route.snapshot.paramMap.get('id');
   editMode : boolean = false;
-  patientData = {}  
+  patientData = {
+    name: '',
+    address: '',
+    phone: '', 
+    age: '',
+    father_name: '',
+    father_job: '',
+    father_age: '',
+    mather_name: '',
+    mather_age: '',
+    number_of_births: '',
+    mather_job: '' , 
+    date: '',
+    note: '',
+    relation_type: ''
+  };
+
   constructor(private api: ApiService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
