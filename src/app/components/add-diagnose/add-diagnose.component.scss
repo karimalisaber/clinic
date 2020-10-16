@@ -13,13 +13,17 @@ section{
     }
 }
 
+.btn-wrapper{
+    position: relative;
+    z-index: 15;
+}
 
 .main-wrapper{
     position: relative;
     z-index: 10 ;
     width: 80%;
     margin: auto;
-    padding-top: 70px;
+    padding-top: 40px;
     
     table{
         // background-color: #000;

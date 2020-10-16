@@ -31,11 +31,28 @@ export class ApiService {
     return this.http.post(addPatientUrl, patient);
   }
 
+  editPatient(patient){
+    let addPatientUrl = `${url}api/doctor/update_patient_data`;
+
+    return this.http.post(addPatientUrl, patient);
+  }
+
   getAllPatients(page){
     let allPatientsUrl = `${url}api/doctor/all_patient?page=${page}`;
     return this.http.get(allPatientsUrl);
   }
 
+  
+  getfilteredPatients(name){
+    let allPatientsUrl = `${url}api/doctor/search`;
+    return this.http.post(allPatientsUrl, {name});
+  }
+
+  reOrder(patient_id){
+    let reOrderUrl = `${url}api/doctor/re_order`;
+
+    return this.http.post(reOrderUrl, {patient_id});    
+  }
   
   getAllOrderedPatients(page){
     let allPatientsUrl = `${url}api/doctor/all_orders_patients?page=${page}`;
@@ -43,11 +60,16 @@ export class ApiService {
   }
 
   deletePatient(id){
-    let deletePatientsUrl = `${url}api/doctor/delete_patient/${id}`;
+    let deletePatientsUrl = `${url}api/doctor/delete_patient_profile/${id}`;
     
     return this.http.get(deletePatientsUrl);
   }
   
+  deletePatientOrder(id){
+    let deletePatientsUrl = `${url}api/doctor/delete_patient_order/${id}`;
+    
+    return this.http.get(deletePatientsUrl);
+  }
 
   getSpecificPatinet(id){
     let specificPatientsUrl = `${url}api/doctor/specific_patient/${id}`;

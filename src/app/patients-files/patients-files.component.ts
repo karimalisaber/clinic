@@ -4,6 +4,7 @@ import { ApiService } from '../services/api.service';
 import { AssetsService } from '../services/assets.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteDialogComponent } from './../components/delete-dialog/delete-dialog.component';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-patients-files',
@@ -18,6 +19,7 @@ export class PatientsFilesComponent implements OnInit {
     last_page: 1,
     pagesNumber: []
   };
+  showPagination = true;
   displayedColumns: string[] = ['name', 'age', 'phone', 'address', 'action'];
   
   role = +localStorage.getItem('role')
@@ -48,7 +50,20 @@ export class PatientsFilesComponent implements OnInit {
     )
   }
 
-  
+  filter(value){
+    if(value){
+      this.showPagination = false
+      this.api.getfilteredPatients(value).pipe(debounceTime(250)).subscribe((res:any)=>{
+        this.patients = res.data
+      })
+    }else{
+      this.getPatients();
+      this.showPagination = true
+      
+    }
+   
+  }
+
   prev(){
     if(this.pages.current_page <= 1) return
     this.pages.current_page--;

@@ -1,5 +1,21 @@
-<section class="pb-150" style="background-image: url('assets/images/patient-details.jpg');">
+<section class="pb-50" style="background-image: url('assets/images/patient-details.jpg');">
     <div class="overlay"> </div>
+  
+    <div class="btn-wrapper pt-20 text-center">
+        <button [routerLink]="'/add_patient/' + patientId" class="btn btn-primary mh-20">
+            تعديل
+        </button>
+
+        <button (click)="deletePatientOrder()" class="btn btn-warning">
+            الغاء الحجز
+        </button>
+
+        
+        <button (click)="deletePatient()" class="btn btn-danger mh-20">
+            حذف ملفات المريض
+        </button>
+    </div>
+
     <div class="main-wrapper">
         <h1>معلومات المريض</h1>
         <table class="table table-bordered">
@@ -75,23 +91,15 @@
               </tr>
             </thead>
             <tbody>
-            
-    
-
-    
               <tr>
                 <th class="title">ملاحظات</th>
                 <td></td>
-                <td>{{patientData.notes}}</td>
+                <td>{{patientData.note}}</td>
               
               </tr>
             </tbody>
         </table>
         
-    
-    
-
-    
         <div class="diagnose" dir="ltr">
         <form #userForm="ngForm" (ngSubmit)="addDiagnose()" class="section text-right ph-70">
                 <div class="input-group mb-3">
@@ -101,17 +109,6 @@
         
                     <input type="text" name ="complaint" [(ngModel)]="patientData.complaint" class="form-control"  #address="ngModel"  id="complaint" >
                 </div>
-        
-
-                <div class="input-group mb-3">
-                    <div class="input-group-append">
-                        <label class="input-group-text" for="examination" >examination</label>
-                    </div>
-        
-                    <input type="text" name ="examination" [(ngModel)]="patientData.examination" class="form-control" #phone="ngModel"  id="examination" >
-                    
-                </div>
-        
         
                 
                 <div class="input-group mb-3">
@@ -165,10 +162,26 @@
 
                 <div class="input-group mb-3">
                     <div class="input-group-append">
-                        <label class="input-group-text" for="nose" >nose</label>
+                        <label class="input-group-text" for="wt" >wt</label>
                     </div>
         
-                    <input type="text" name ="nose" [(ngModel)]="patientData.nose" class="form-control"  #nose="ngModel" id="nose" >
+                    <input type="text" name ="wt" [(ngModel)]="patientData.wt" class="form-control"  #wt="ngModel" id="wt" >
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-append">
+                        <label class="input-group-text" for="tep" >tep</label>
+                    </div>
+        
+                    <input type="text" name ="tep" [(ngModel)]="patientData.tep" class="form-control"  #tep="ngModel" id="tep" >
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-append">
+                        <label class="input-group-text" for="hc" >hc</label>
+                    </div>
+        
+                    <input type="text" name ="hc" [(ngModel)]="patientData.hc" class="form-control"  #hc="ngModel" id="hc" >
                 </div>
 
 
@@ -187,9 +200,17 @@
                         <label class="input-group-text" for="abd" >abd</label>
                     </div>
         
-                    <input type="text" name ="abd" [(ngModel)]="patientData.abd" class="form-control"  #abd="ngModel" id="chest" >
+                    <input type="text" name ="abd" [(ngModel)]="patientData.abd" class="form-control"  #abd="ngModel" id="abd" >
                 </div>
                 
+                
+                <div class="input-group mb-3">
+                    <div class="input-group-append">
+                        <label for="chest" class="input-group-text" for="abd" >chest</label>
+                    </div>
+        
+                    <input type="text" name ="chest" [(ngModel)]="patientData.chest" class="form-control"  #chest="ngModel" id="chest" >
+                </div>
 
                 
                 <div class="input-group mb-3">
@@ -209,9 +230,18 @@
                     <input type="text" name ="other" [(ngModel)]="patientData.other" class="form-control"  #other="ngModel" id="other" >
                 </div>
                 
-                            
+                
+                <div class="input-group mb-3">
+                    <div class="input-group-append">
+                        <label class="input-group-text" for="other" >files</label>
+                    </div>
+        
+                    <input type="file" name ="other"  (change)=uploadFiles($event.target) class="form-control" file multiple id="other" >
+                </div>
+                
+                
                 <div class="text-center w-100 d-flex justify-content-center mb-30 mt-20 ">
-                    <button [disabled]="userForm.invalid" class="admin-btn pv-20 rounded">تسجيل</button>
+                    <button [disabled]="userForm.invalid || isLoading" class="admin-btn pv-20 rounded">تسجيل</button>
                 </div>
             </form>
         </div>

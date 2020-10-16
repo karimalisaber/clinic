@@ -13,9 +13,11 @@ role = +localStorage.getItem('role')
   constructor(private route: ActivatedRoute, private router : Router) { }
 
   ngOnInit(): void {
+
    this.route.url.subscribe((res:UrlSegment[])=>{
-    this.loginPage =  (window.location.pathname === '/login' )? true : false;  
-   })
+    this.loginPage =  (window.location.href.includes('/login'))? true : false;  
+   });
+   
   }
 
   toggle(){

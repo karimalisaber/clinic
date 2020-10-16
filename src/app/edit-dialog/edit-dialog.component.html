@@ -1,0 +1,24 @@
+<!-- <form #userForm="ngForm" (ngSubmit)="edit(userForm.value)" >
+    <h3 class="title">
+        تعديل بيانات المريض
+    </h3>
+    <hr>
+
+   
+
+    <div *ngIf="type !==2 && type !==7 && type !==6" class="form-group">
+        <label class="main-label" for="name">  <span class="text-danger">*</span> </label>
+        <input required name="name" class="form-control" id="name" placeholder="Name" 
+        [(ngModel)]="form.name"
+        >
+    </div>
+
+    
+   
+    <div style="width: 200px;" class="mv-20 action d-flex">
+        <button *ngIf="!isLoading" type="button"  class="rounded-0 btn btn-primary" [disabled] = "!userForm.valid" > Edit</button>
+        <span *ngIf="isLoading" class="rounded-0 btn warning-background  btn-warning  loading"> loading...</span>
+
+        <button mat-dialog-close type="button" class="btn btn-danger rounded-0"> Cancel</button> 
+    </div>
+</form> -->

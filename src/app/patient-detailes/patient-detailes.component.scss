@@ -56,3 +56,46 @@ section{
     }
 
 }
+
+@media(max-width:900px){
+    
+    
+    .main-wrapper{
+        width: 95%;
+        
+    
+        h1{
+            font-size: 2rem;
+        }
+    
+        th, td{
+            font-size: 1rem;
+            font-weight: 480;
+        }
+    
+        th{
+            font-size: .9rem;
+            line-height: 40px;
+        }
+    
+        th.title{
+            line-height: 60px;
+            // font-size: 1.4;
+            color: #000;
+            width: 120px;
+        }
+    
+    }       
+}
+
+.admin-btn{
+    z-index: 5454;
+}
+.divided{
+    padding: 0 15px ;
+    // border: 1px solid d;
+    color: darkorange;
+    &:hover{
+        color: darkolivegreen;
+    }
+}

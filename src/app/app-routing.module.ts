@@ -20,7 +20,9 @@ const routes: Routes = [
   {path: 'admin', component: HomeComponent , canActivate: [AuthGuardService]},
   {path: 'patients_files', component: PatientsFilesComponent , canActivate: [AuthGuardService]},
   {path: 'add_patient', component: AddPatientComponent, canActivate: [AuthGuardService]},
+  {path: 'add_patient/:id', component: AddPatientComponent, canActivate: [AuthGuardService]},
   {path: 'patient_details/:id', component:PatientDetailesComponent, canActivate: [AuthGuardService]},
+  {path: 'patient_details/:id/:type', component:PatientDetailesComponent, canActivate: [AuthGuardService]},
   {path: 'add_diagnose/:id', component:AddDiagnoseComponent, canActivate: [AuthGuardService]}
 ];
 

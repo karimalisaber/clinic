@@ -20,6 +20,8 @@ import { PatientsFilesComponent } from './patients-files/patients-files.componen
 import { DeleteDialogComponent } from './components/delete-dialog/delete-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { ReorderConfirmComponent } from './components/reorder-confirm/reorder-confirm.component';
+import { EditDialogComponent } from './edit-dialog/edit-dialog.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,8 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
     SnackbarComponent,
     PatientsFilesComponent,
     DeleteDialogComponent,
+    ReorderConfirmComponent,
+    EditDialogComponent,
   ],
 
   entryComponents:[

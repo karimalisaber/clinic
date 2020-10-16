@@ -26,8 +26,8 @@
         <thead>
           <tr>
             <th scope="col"></th>
-            <th scope="col">معلومات الأم</th>
             <th scope="col">معلومات الأب</th>
+            <th scope="col">معلومات الأم</th>
           
           </tr>
         </thead>
@@ -55,100 +55,129 @@
             <td></td>
             <td>{{patientData.number_of_births}}</td>
           </tr>
+
+          <tr>
+            <th class="title">درجة القرابة</th>
+            <td>{{patientData.relation_type}}</td>
+            <td>{{patientData.relation_type}}</td>
+          </tr>
+
+
         </tbody>
     </table>
 
 
-    <h1>التشخيص</h1>
-    <table class="table table-bordered">
-      
+   
+    <table *ngFor="let diagnose of patientData.diagnoses " class="table table-bordered">
+      <h1 class="text-center">التشخيص</h1>   
         <tbody>
           <tr>
-            <th class="title"> Complaint </th>
-            <td class="text-right pr-30"> {{patientData.complaint}}</td>
-          </tr>
-
+            <th class="title"> تاريخ التشخيص </th>
+            <td class="text-right pr-30"> {{diagnose.created_at | date}}</td>
+          </tr> 
           <tr>
-            <th class="title">Examination</th>
-            <td class="text-right pr-30">{{patientData.examination}}</td>
+            <th class="title"> Complaint </th>
+            <td class="text-right pr-30"> {{diagnose.complaint}}</td>
           </tr>
 
           <tr>
             <th class="title">Diagnosis</th>
-            <td class="text-right pr-30">{{patientData.diagnosis}}</td>
+            <td class="text-right pr-30">{{diagnose.diagnosis}}</td>
           </tr>
 
           
           <tr>
             <th class="title">Investigation</th>
-            <td class="text-right pr-30">{{patientData.investigation}}</td>
+            <td class="text-right pr-30">{{diagnose.investigation}}</td>
           </tr>
 
           
           <tr>
             <th class="title">Treatment</th>
-            <td class="text-right pr-30">{{patientData.treamtent}}</td>
+            <td class="text-right pr-30">{{diagnose.treamtent}}</td>
           </tr>
 
           
           <tr>
             <th class="title">Reseen</th>
-            <td class="text-right pr-30">{{patientData.reseen}}</td>
+            <td class="text-right pr-30">{{diagnose.reseen}}</td>
           </tr>
 
           
           <tr>
             <th class="title">H £ N </th>
-            <td class="text-right pr-30">{{patientData.hn}}</td>
+            <td class="text-right pr-30">{{diagnose.hn}}</td>
           </tr>
 
           
           <tr>
             <th class="title">Phnx</th>
-            <td class="text-right pr-30">{{patientData.phnx}}</td>
+            <td class="text-right pr-30">{{diagnose.phnx}}</td>
           </tr>
 
           
           <tr>
-            <th class="title">Nose</th>
-            <td class="text-right pr-30">{{patientData.nose}}</td>
+            <th class="title">Wt</th>
+            <td class="text-right pr-30">{{diagnose.wt}}</td>
           </tr>
 
+
+          <tr>
+            <th class="title">Tep</th>
+            <td class="text-right pr-30">{{diagnose.tep}}</td>
+          </tr>
+
+          <tr>
+            <th class="title">Hc</th>
+            <td class="text-right pr-30">{{diagnose.hc}}</td>
+          </tr>
 
           
           <tr>
             <th class="title">Hrt </th>
-            <td class="text-right pr-30">{{patientData.hrt}}</td>
+            <td class="text-right pr-30">{{diagnose.hrt}}</td>
           </tr>
 
           
           <tr>
             <th class="title">Abd</th>
-            <td class="text-right pr-30">{{patientData.abd}}</td>
+            <td class="text-right pr-30">{{diagnose.abd}}</td>
           </tr>
 
+          <tr>
+            <th class="title">chest</th>
+            <td class="text-right pr-30">{{diagnose.chest}}</td>
+          </tr>
           
           <tr>
             <th class="title">Gentalia</th>
-            <td class="text-right pr-30">{{patientData.gentalia}}</td>
+            <td class="text-right pr-30">{{diagnose.gentalia}}</td>
           </tr>
 
           
           <tr>
             <th class="title">other</th>
-            <td class="text-right pr-30">{{patientData.other}}</td>
+            <td class="text-right pr-30">{{diagnose.other}}</td>
           </tr>
 
-
           
-
+          <tr *ngIf="diagnose.diagnose_files.length">
+            <th class="title">files</th>
+            <td class="text-right pr-30">
+              <div *ngFor="let file of diagnose.diagnose_files">
+                <a  class="divided w-50" [href]="file.img" target="_blanck">
+                  {{file.img}}
+                </a>
+              </div>
+            
+            </td>
+          </tr>
         </tbody>
     </table>
 
     
     <h1>معلومات اضافية</h1>
     <table class="table table-bordered">
-      
         <tbody>
           <tr>
             <th class="title">معاد آخر زيارة </th>
@@ -157,11 +186,14 @@
 
           <tr>
             <th class="title">ملاحظات </th>
-            <td class="text-right pr-30">{{patientData.notes}}</td>
+            <td class="text-right pr-30">{{patientData.note}}</td>
           </tr>
-        
         </tbody>
     </table>
+</div>
+
+<div *ngIf="type ==0" (click)="reOrder()" class="text-center w-100 d-flex justify-content-center mb-30 mt-20 ">
+  <button class="admin-btn pv-20 rounded">اعادة حجز</button>
 </div>
 
 <!-- <div class="mt-150"></div> -->

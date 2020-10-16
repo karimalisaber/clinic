@@ -48,3 +48,16 @@ h1{
     font-family: 'Courier New', Courier, monospace;
     font-size: 3rem;
 }
+
+
+@media(max-width:770px){
+    td,th{
+        font-size: .8rem !important;
+    }
+    a{
+        font-size: .8rem !important;
+    }
+    h1{
+        font-size: 3rem !important;
+    }
+}

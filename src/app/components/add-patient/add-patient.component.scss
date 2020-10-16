@@ -44,3 +44,14 @@ textarea{
 .input-group-text{
     background-color: #fff;
 }
+
+
+@media(max-width:900px){
+form{
+    width: 95% !important;
+}
+    .section{
+        padding-right: 10px !important;
+        padding-left: 10px !important;
+    }
+}

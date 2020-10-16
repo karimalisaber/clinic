@@ -39,8 +39,9 @@ export class HomeComponent implements OnInit {
 
       // this.patients.push(res.data)
       // this.changeDetector.detectChanges();
+      this.getPatients();
 
-      location.reload()
+      // location.reload()
     });
   }
 
