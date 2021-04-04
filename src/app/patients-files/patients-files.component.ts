@@ -20,8 +20,8 @@ export class PatientsFilesComponent implements OnInit {
     pagesNumber: []
   };
   showPagination = true;
-  displayedColumns: string[] = ['name', 'age', 'phone', 'address', 'action'];
-  
+  displayedColumns: string[] = ['name', 'age', 'phone', 'address', 'action', 'delete'];
+
   role = +localStorage.getItem('role')
 
   isLoading: boolean = false;
@@ -33,20 +33,20 @@ export class PatientsFilesComponent implements OnInit {
     this.getPatients();
   }
 
-  
+
   getPatients(){
     this.isLoading = true;
 
     this.api.getAllPatients(this.pages.current_page).subscribe((res:any)=>{
-      this.patients = res.data.data;
-      this.pages.current_page = res.data.current_page;
-      this.pages.last_page = res.data.last_page;
+      this.patients = res.data;
+      this.pages.current_page = res.current_page;
+      this.pages.last_page = res.last_page;
       this.pages.pagesNumber = Array(this.pages.last_page);
 
     },error=>{},
     ()=>{
       this.isLoading  = false;
-    } 
+    }
     )
   }
 
@@ -59,9 +59,9 @@ export class PatientsFilesComponent implements OnInit {
     }else{
       this.getPatients();
       this.showPagination = true
-      
+
     }
-   
+
   }
 
   prev(){
@@ -79,7 +79,7 @@ export class PatientsFilesComponent implements OnInit {
   otherPatients(pageNumber){
     if(pageNumber !== this.pages.current_page){
       this.pages.current_page = pageNumber;
-      
+
     //   this.router.navigate([], {
     //     queryParams: {'page': this.pages.current_page},
     //  });
@@ -91,6 +91,29 @@ export class PatientsFilesComponent implements OnInit {
   deleteAlert(id){
     // this.assets.deleteAlert(id).subscribe(res=> res? this.delete(id): false)
   }
+
+  delete(id){
+    let index = this.patients.findIndex(res=>res.id === id);
+    let patient = this.patients.splice(index , 1);
+
+    return  this.dialog.open(DeleteDialogComponent,{
+      panelClass: 'confirm-dialog-container',
+      position: {top: '20px'},
+    })
+      .afterClosed().subscribe(res=>{
+        if(res ==='yes'){
+
+          this.api.deletePatient(id).subscribe(res=>{
+            location.reload()
+          })
+        }
+
+      },err=>{
+        this.patients.splice(index, 0 , patient)
+      })
+    // this.backend.delete(id);
+  }
+
 
 
 }

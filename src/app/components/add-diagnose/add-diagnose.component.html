@@ -2,17 +2,8 @@
     <div class="overlay"> </div>
   
     <div class="btn-wrapper pt-20 text-center">
-        <button [routerLink]="'/add_patient/' + patientId" class="btn btn-primary mh-20">
-            تعديل
-        </button>
-
         <button (click)="deletePatientOrder()" class="btn btn-warning">
             الغاء الحجز
-        </button>
-
-        
-        <button (click)="deletePatient()" class="btn btn-danger mh-20">
-            حذف ملفات المريض
         </button>
     </div>
 

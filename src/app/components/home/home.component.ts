@@ -11,15 +11,18 @@ import { RealtimeService } from './../../services/realtime.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
+
 export class HomeComponent implements OnInit {
   patients: Array<any>;
+
   pages = {
     current_page: 1,
     last_page: 1,
     pagesNumber: []
   };
+
   displayedColumns: string[] = ['name', 'age', 'phone', 'address', 'action', 'delete'];
-  
+
   isLoading: boolean = false;
   subscription: Subscription;
 
@@ -29,7 +32,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.getPatients();
-    this.getNewPatients();
+    // this.getNewPatients();
   }
 
   getNewPatients(){
@@ -45,52 +48,53 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  
-  delete(id){    
-    let index = this.patients.findIndex(res=>res.id === id); 
+
+  delete(id){
+    let index = this.patients.findIndex(res=>res.id === id);
     let patient = this.patients.splice(index , 1);
-    
+
     return  this.dialog.open(DeleteDialogComponent,{
       panelClass: 'confirm-dialog-container',
       position: {top: '20px'},
     })
       .afterClosed().subscribe(res=>{
         if(res ==='yes'){
-          
-          this.api.deletePatient(id).subscribe(res=>{
-            location.reload()            
+
+          this.api.deletePatientOrder(id).subscribe(res=>{
+            location.reload()
           })
         }
-        
+
       },err=>{
         this.patients.splice(index, 0 , patient)
       })
     // this.backend.delete(id);
   }
 
-  
+
   getPatients(){
     this.isLoading = true;
 
     this.api.getAllOrderedPatients(this.pages.current_page).subscribe((res:any)=>{
-      this.patients = res.data.data;
-      this.pages.current_page = res.data.current_page;
-      this.pages.last_page = res.data.last_page;
+      this.patients = res.data;
+      this.pages.current_page = res.current_page;
+      this.pages.last_page = res.last_page;
       this.pages.pagesNumber = Array(this.pages.last_page);
-
-    },error=>{},
+    },error=>{
+      this.isLoading  = false;
+    },
     ()=>{
       this.isLoading  = false;
-    } 
+    }
     )
   }
 
-  
+
   prev(){
     if(this.pages.current_page <= 1) return
     this.pages.current_page--;
     this.getPatients();
-    
+
   }
 
   next(){
@@ -102,7 +106,7 @@ export class HomeComponent implements OnInit {
   otherPatients(pageNumber){
     if(pageNumber !== this.pages.current_page){
       this.pages.current_page = pageNumber;
-      
+
     //   this.router.navigate([], {
     //     queryParams: {'page': this.pages.current_page},
     //  });

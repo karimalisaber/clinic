@@ -13,8 +13,8 @@ export class PatientDetailesComponent implements OnInit {
   constructor(private route: ActivatedRoute, private api: ApiService, private router: Router ) { }
   patientId = this.route.snapshot.paramMap.get('id')
   type = +this.route.snapshot.paramMap.get('type') // 0 from patient details
-  
-  role = +localStorage['role']  
+
+  role = +localStorage['role']
   patientData = {
     patient_id: this.patientId,
     complaint: '',
@@ -22,7 +22,7 @@ export class PatientDetailesComponent implements OnInit {
     diagnosis:'',
     investigation: '',
     treamtent: '',
-    reseen: '', 
+    reseen: '',
     hn: '',
     hrt: '',
     nose: '',
@@ -47,9 +47,9 @@ export class PatientDetailesComponent implements OnInit {
     note:'',
     date: ''
   }
-  
-  
-  ngOnInit(): void {    
+
+
+  ngOnInit(): void {
     this.getPatientDetails();
   }
 
@@ -62,12 +62,10 @@ export class PatientDetailesComponent implements OnInit {
 
     })
   }
-  
+
   getPatientDetails(){
     this.api.getSpecificPatients(this.patientId).subscribe((res:any)=>{
-      this.patientData= res.data;
-      console.log(this.patientData);
-      
+      this.patientData= res;
     })
   }
 

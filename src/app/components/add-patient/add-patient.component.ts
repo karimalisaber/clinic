@@ -14,7 +14,7 @@ export class AddPatientComponent implements OnInit {
   patientData = {
     name: '',
     address: '',
-    phone: '', 
+    phone: '',
     age: '',
     father_name: '',
     father_job: '',
@@ -22,7 +22,7 @@ export class AddPatientComponent implements OnInit {
     mather_name: '',
     mather_age: '',
     number_of_births: '',
-    mather_job: '' , 
+    mather_job: '' ,
     date: '',
     note: '',
     relation_type: ''
@@ -31,21 +31,17 @@ export class AddPatientComponent implements OnInit {
   constructor(private api: ApiService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    console.log(this.patientId, 'id');
-    
+
     if(this.patientId){
       this.editMode = true;
       this.getSpecificPatient();
     }
-
-
   }
 
   getSpecificPatient(){
     this.api.getSpecificPatients(this.patientId).subscribe(res=>{
-      this.patientData = res['data']
-      
-    })
+      this.patientData = res
+    });
   }
 
   addPatient(form){
@@ -53,20 +49,18 @@ export class AddPatientComponent implements OnInit {
       this.editPatient(form);
       return
     }
+
     this.api.addPatient(form).subscribe(res=>{
     setTimeout(re=>{
       this.router.navigate(['admin'])
     }, 2200)
-    this.api.successMessage('تم تسجيل بيانات المريض بنجاح');
-    },err=>{
-      // console.log(err);
-      
-    },
-    () => {
 
+    this.api.successMessage('تم تسجيل بيانات المريض بنجاح');
     }
+
     )
   }
+
 
   editPatient(form){
     form.patient_id = this.patientId;
@@ -77,10 +71,10 @@ export class AddPatientComponent implements OnInit {
       this.api.successMessage('تم تعديل بيانات المريض بنجاح');
       },err=>{
         // console.log(err);
-        
+
       },
       () => {
-  
+
       }
       )
   }

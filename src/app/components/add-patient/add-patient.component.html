@@ -44,7 +44,7 @@
                 <label class="input-group-text" for="age" >العمر</label>
             </div>
 
-            <input type="number" class="form-control" name="age" #age="ngModel"  [(ngModel)]="patientData.age" id="age"  required
+            <input class="form-control" name="age" #age="ngModel"  [(ngModel)]="patientData.age" id="age"  required
             [ngClass]="{ 'is-invalid': age.invalid && age.touched , 'is-valid': !age.invalid && age.touched }"
             
             >
@@ -82,7 +82,7 @@
                 <label class="input-group-text" for="father_age" >العمر</label>
             </div>
 
-            <input type="number" class="form-control" required name="father_age" #father_age="ngModel" [(ngModel)]="patientData.father_age" id="father_age" 
+            <input class="form-control" required name="father_age" #father_age="ngModel" [(ngModel)]="patientData.father_age" id="father_age" 
             [ngClass]="{ 'is-invalid': father_age.invalid && father_age.touched , 'is-valid': !father_age.invalid && father_age.touched}"
             
             >
@@ -112,7 +112,7 @@
                 <label class="input-group-text" for="age" id="mather_age">العمر</label>
             </div>
 
-            <input type="number" class="form-control"  required name="mather_age" [(ngModel)]="patientData.mather_age" #mather_age="ngModel" id="mather_age" 
+            <input class="form-control"  required name="mather_age" [(ngModel)]="patientData.mather_age" #mather_age="ngModel" id="mather_age" 
             [ngClass]="{ 'is-invalid': mather_age.invalid && mather_age.touched , 'is-valid': !mather_age.invalid && mather_age.touched, 'pr-50': mather_age.touched }"
             
             >
@@ -124,7 +124,7 @@
                 <label class="input-group-text" for="number_of_births" >عدد مرات الولادة </label>
             </div>
 
-            <input type="number" class="form-control" name="number_of_births" [(ngModel)]="patientData.number_of_births" #number_of_births="ngModel" id="number_of_births"  required
+            <input class="form-control" name="number_of_births" [(ngModel)]="patientData.number_of_births" #number_of_births="ngModel" id="number_of_births"  required
             [ngClass]="{ 'is-invalid': number_of_births.invalid && number_of_births.touched , 'is-valid': !number_of_births.invalid && number_of_births.touched }"
             
             >

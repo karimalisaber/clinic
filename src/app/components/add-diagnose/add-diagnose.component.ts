@@ -22,7 +22,7 @@ patientData = {
   diagnosis:'',
   investigation: '',
   treamtent: '',
-  reseen: '', 
+  reseen: '',
   hn: '',
   hrt: '',
   phnx:'',
@@ -47,17 +47,17 @@ patientData = {
   note:'',
   date: '',
 }
-  
+
 constructor(private route: ActivatedRoute, private api: ApiService, private router: Router, private dialog: MatDialog) { }
 isLoading = false;
-  ngOnInit(): void {    
+  ngOnInit(): void {
     this.getPatientData();
   }
 
   private getPatientData(){
     this.api.getSpecificPatients(this.patientId).subscribe((res:any)=>{
-      this.patientData = res.data;
-      
+      this.patientData = res;
+
       this.patientData['patient_id'] = this.patientId
     })
   }
@@ -72,7 +72,7 @@ isLoading = false;
       diagnosis:this.patientData.diagnosis || "",
       investigation: this.patientData.investigation || "",
       treamtent: this.patientData.treamtent || "",
-      reseen: this.patientData.reseen || "", 
+      reseen: this.patientData.reseen || "",
       hn: this.patientData.hn || "",
       hrt: this.patientData.hrt || "",
       phnx:this.patientData.phnx || "",
@@ -91,7 +91,7 @@ isLoading = false;
      this.form.append( "diagnosis",this.patientData.diagnosis || "")
      this.form.append( "investigation", this.patientData.investigation || "")
      this.form.append( "treamtent", this.patientData.treamtent || "")
-     this.form.append( "reseen", this.patientData.reseen || "") 
+     this.form.append( "reseen", this.patientData.reseen || "")
      this.form.append( "hn", this.patientData.hn || "")
      this.form.append( "hrt", this.patientData.hrt || "")
      this.form.append( "phnx",this.patientData.phnx || "")
@@ -103,8 +103,8 @@ isLoading = false;
      this.form.append(  "tep", this.patientData.tep)
      this.form.append( "hc", this.patientData.hc)
 
-    
-    
+
+
     this.api.updateDiagnose(this.form).subscribe(res=>{
       this.api.successMessage('diagnose added successfully').afterDismissed().subscribe(rs=>{
         this.router.navigateByUrl('/')
@@ -112,7 +112,7 @@ isLoading = false;
       });
     },err=>{
       this.isLoading = true
-      
+
     });
   }
 
@@ -127,13 +127,13 @@ isLoading = false;
     })
       .afterClosed().subscribe(res=>{
         if(res ==='yes'){
-          
+
           this.api.deletePatient(this.patientId).subscribe(res=>{
-            
+
             this.router.navigateByUrl('')
            })
         }
-        
+
       },err=>{
       })
   }
@@ -145,17 +145,17 @@ isLoading = false;
     })
       .afterClosed().subscribe(res=>{
         if(res ==='yes'){
-          
+
           this.api.deletePatientOrder(this.patientId).subscribe(res=>{
             this.router.navigateByUrl('')
 
           })
         }
-        
+
       },err=>{
       })
   }
-  
+
   uploadFiles(files){
     if(files.files){
       for(let i=0; i<files.files.length; i++ ){
